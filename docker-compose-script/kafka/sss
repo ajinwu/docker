@@ -1,0 +1,23 @@
+docker exec kafka2 \
+kafka-topics.sh \
+--create --topic topic001 \
+--partitions 1 \
+--zookeeper zookeeper:2181 \
+--replication-factor 1
+
+
+
+docker exec kafka2 \
+kafka-topics.sh --list \
+--zookeeper zookeeper:2181
+
+
+docker exec kafka2 \
+kafka-console-consumer.sh \
+--topic topic001 \
+--bootstrap-server kafka2:9092
+
+docker exec -it kafka2 \
+kafka-console-producer.sh \
+--topic topic001 \
+--broker-list kafka2:9092
