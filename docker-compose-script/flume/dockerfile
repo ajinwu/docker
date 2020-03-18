@@ -1,0 +1,7 @@
+FROM bde2020/flume:latest
+
+WORKDIR /app
+RUN mkdir job
+ADD flume-netcat-logger.conf job/
+ADD entrypoint.sh entrypoint.sh ./
+ENTRYPOINT ["bash", "entrypoint.sh"]
